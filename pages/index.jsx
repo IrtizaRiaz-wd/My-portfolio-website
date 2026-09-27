@@ -14,7 +14,7 @@ export default function Home() {
       name: 'Ember & Plate',
       category: 'Restaurant',
       description: 'Premium restaurant website with menu, reservations, gallery and responsive design.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['Next.js', 'Tailwind CSS', 'CSS Animations'],
       link: '/restaurant',
       color: 'from-red-600 to-amber-600',
     },
@@ -23,7 +23,7 @@ export default function Home() {
       name: 'Nova Threads',
       category: 'E-Commerce',
       description: 'Modern fashion e-commerce interface with product filtering, cart functionality and responsive design.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['Next.js', 'React Context', 'Cart Logic'],
       link: '/nova-threads',
       color: 'from-gray-900 to-gray-700',
     },
@@ -32,7 +32,7 @@ export default function Home() {
       name: 'Vanta Barber',
       category: 'Barbershop',
       description: 'Premium barbershop website with services, barber profiles and appointment interface.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['Next.js', 'Auth Flow', 'Dark Theme'],
       link: '/vanta-barber',
       color: 'from-red-700 to-gray-900',
     },
@@ -41,7 +41,7 @@ export default function Home() {
       name: 'Iron District',
       category: 'Fitness',
       description: 'High-energy fitness website with programs, memberships and trainer profiles.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['Next.js', 'Tailwind CSS', 'Responsive UI'],
       link: '/iron-district',
       color: 'from-red-600 to-black',
     },
@@ -50,7 +50,7 @@ export default function Home() {
       name: 'Northline Estates',
       category: 'Real Estate',
       description: 'Luxury real estate platform with property search, filtering and detailed property pages.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['Next.js', 'Search & Filters', 'SEO-ready'],
       link: '/northline-estates',
       color: 'from-yellow-700 to-blue-900',
     },
@@ -59,7 +59,7 @@ export default function Home() {
       name: 'Velocity Rentals',
       category: 'Car Rental',
       description: 'Modern vehicle rental website with vehicle filtering, pricing and booking interface.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['Next.js', 'Booking Flow', 'Pricing UI'],
       link: '/velocity-rentals',
       color: 'from-red-600 to-gray-900',
     },
@@ -68,7 +68,7 @@ export default function Home() {
       name: 'Northstar Digital',
       category: 'Digital Agency',
       description: 'Modern agency website showcasing services, case studies and conversion-focused layouts.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['Next.js', 'Landing Sections', 'A11y'],
       link: '/northstar-digital',
       color: 'from-indigo-600 to-purple-700',
     },
@@ -132,9 +132,12 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20 md:py-32">
+        <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20 md:py-32">
           <div className="container-custom">
             <div className="max-w-3xl">
+              <span className="inline-block text-sm font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full mb-6">
+                Available for freelance work
+              </span>
               <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
                 Irtiza
               </h1>
@@ -147,7 +150,7 @@ export default function Home() {
               <div className="flex gap-4 flex-col sm:flex-row">
                 <a
                   href="#work"
-                  className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition text-center"
+                  className="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition text-center"
                 >
                   View My Work
                 </a>
@@ -169,6 +172,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Featured Work
               </h2>
+              <div className="w-16 h-1 bg-blue-600 rounded mb-4"></div>
               <p className="text-xl text-gray-600">
                 Here are some of the projects I've built for clients.
               </p>
@@ -178,7 +182,7 @@ export default function Home() {
               {projects.map((project) => (
                 <div
                   key={project.id}
-                  className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300 transition"
+                  className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-blue-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* Project Image Placeholder */}
                   <div className={`bg-gradient-to-br ${project.color} h-48 flex items-center justify-center text-white text-center p-6 group-hover:shadow-lg transition`}>
@@ -209,7 +213,7 @@ export default function Home() {
 
                     <Link
                       href={project.link}
-                      className="inline-block w-full text-center px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition"
+                      className="inline-block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
                     >
                       View Project
                     </Link>
@@ -227,6 +231,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Services
               </h2>
+              <div className="w-16 h-1 bg-blue-600 rounded mb-4"></div>
               <p className="text-xl text-gray-600">
                 What I can help you with.
               </p>
@@ -236,9 +241,12 @@ export default function Home() {
               {services.map((service, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-8 rounded-lg border border-gray-200 hover:border-gray-300 transition"
+                  className="group bg-white p-8 rounded-lg border border-gray-200 hover:border-blue-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  <span className="text-sm font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded">
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="text-xl font-bold text-gray-900 mt-4 mb-3">
                     {service.title}
                   </h3>
                   <p className="text-gray-600">
@@ -253,9 +261,10 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="py-20 md:py-32 bg-white">
           <div className="container-custom max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               About Me
             </h2>
+            <div className="w-16 h-1 bg-blue-600 rounded mb-8"></div>
 
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
@@ -279,6 +288,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Get In Touch
             </h2>
+            <div className="w-16 h-1 bg-blue-500 rounded mb-4"></div>
             <p className="text-gray-300 text-xl mb-12">
               Have a project in mind? Let's talk about how I can help.
             </p>
@@ -349,7 +359,7 @@ export default function Home() {
                   </div>
                   <div>
                     <textarea
-                      placeholder=" Dont send messege through this Its currently not working just for demo "
+                      placeholder="Tell me about your project — what do you need built?"
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
@@ -376,6 +386,14 @@ export default function Home() {
                       Please fill in all fields.
                     </p>
                   )}
+                  <p className="text-gray-500 text-xs text-center leading-relaxed">
+                    This form is a demo — messages aren't delivered. To reach me
+                    directly, call or WhatsApp{' '}
+                    <a href="tel:03022669408" className="text-blue-400 hover:text-blue-300">
+                      03022669408
+                    </a>
+                    .
+                  </p>
                 </form>
               </div>
             </div>

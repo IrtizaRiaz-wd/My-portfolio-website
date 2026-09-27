@@ -1,24 +1,19 @@
 import Head from 'next/head';
 import { VelocityRentalsNav, VelocityRentalsFooter } from '../../components/AllRemainingNavFooter';
-import ComingSoon from '../../components/ComingSoon';
+import AuthForm from '../../components/AuthForm';
 
-export default function SignupPage() {
+export default function VelocityRentalsSignUp() {
   return (
     <>
       <Head>
         <title>Sign Up - Velocity Rentals</title>
-        <meta name="description" content="Sign Up page - coming soon on the Velocity Rentals demo website." />
+        <meta name="description" content="Sign Up to your Velocity Rentals demo account." />
       </Head>
 
       <VelocityRentalsNav />
 
       <main className="flex-1">
-        <ComingSoon
-          site="Velocity Rentals"
-          home="/velocity-rentals"
-          page="Sign Up"
-          theme="velocity"
-        />
+        <AuthForm mode="signup" theme="velocity" site="Velocity Rentals" home="/velocity-rentals" />
       </main>
 
       <VelocityRentalsFooter />

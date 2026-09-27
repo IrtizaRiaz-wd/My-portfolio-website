@@ -13,33 +13,69 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  background-color: #ffffff;
+  color: #1a1a1a;
 }
 
-/* ==================== PREMIUM CENTER EXPANDING UNDERLINE ==================== */
+/* ==================== PROFESSIONAL COLOR PALETTE ==================== */
+:root {
+  /* Primary Colors */
+  --primary: #0066cc;
+  --primary-dark: #0052a3;
+  --primary-light: #e6f0ff;
+
+  /* Accent Colors */
+  --accent: #ff6b35;
+  --accent-dark: #e55a25;
+  --accent-light: #ffe6d9;
+
+  /* Neutral Colors */
+  --dark: #1a1a1a;
+  --dark-gray: #333333;
+  --gray: #666666;
+  --light-gray: #f5f5f5;
+  --border: #e0e0e0;
+  --white: #ffffff;
+
+  /* Status Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+}
+
+/* ==================== ENHANCED NAVIGATION ==================== */
+/* nav element styles live in each component's own classes — no global nav
+   rule here, or it would leak borders/backgrounds onto the demo sites. */
+
+.nav-container {
+  @apply px-6 py-5 md:px-8 md:py-6;
+}
+
+/* Enhanced nav links with center-expanding underline */
 .nav-link {
-  @apply relative inline-block text-gray-700 font-medium;
+  @apply relative inline-block font-medium transition-all duration-300;
+  color: var(--dark-gray);
   padding-bottom: 8px;
-  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Pseudo-element for the expanding underline */
 .nav-link::after {
   content: '';
-  @apply absolute bottom-0 h-0.5 bg-gray-900;
+  @apply absolute bottom-0 h-0.5;
+  background-color: var(--primary);
   width: 0;
   left: 50%;
   transform: translateX(-50%);
-  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-              left 0.4s ease;
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), left 0.4s ease;
 }
 
-/* Hover state */
 .nav-link:hover {
-  @apply text-gray-900;
+  color: var(--primary);
   transform: scale(1.08);
   letter-spacing: 0.5px;
 }
@@ -50,9 +86,9 @@ body {
   transform: translateX(0);
 }
 
-/* Active state */
 .nav-link.active {
-  @apply text-gray-900;
+  color: var(--primary);
+  font-weight: bold;
   transform: scale(1.05);
 }
 
@@ -62,30 +98,151 @@ body {
   transform: translateX(0);
 }
 
-/* Click/active animation */
-.nav-link:active {
-  transform: scale(0.98);
-}
-
-/* Utility Classes */
-.container-custom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.container-lg {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
+/* ==================== BUTTONS ==================== */
 .btn-base {
   @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 cursor-pointer;
+  transform: translateY(0);
 }
 
 .btn-primary {
+  @apply btn-base text-white;
+  background-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  @apply shadow-xl;
+  transform: translateY(-3px);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
   @apply btn-base;
+  background-color: var(--light-gray);
+  color: var(--dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border);
+  @apply shadow-lg;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  @apply btn-base;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: white;
+  @apply shadow-lg;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* ==================== CARDS ==================== */
+.card {
+  @apply transition-all duration-300 ease-out;
+  transform: translateY(0);
+}
+
+.card:hover {
+  @apply shadow-2xl;
+  transform: translateY(-8px);
+}
+
+.project-card {
+  @apply rounded-xl overflow-hidden transition-all duration-300 bg-white;
+  border: 1px solid var(--border);
+}
+
+.project-card:hover {
+  border-color: var(--primary);
+  @apply shadow-2xl;
+  transform: translateY(-8px);
+}
+
+.service-card {
+  @apply bg-white p-8 rounded-xl transition-all duration-300;
+  border: 1px solid var(--border);
+}
+
+.service-card:hover {
+  border-color: var(--primary);
+  @apply shadow-xl;
+  transform: translateY(-4px);
+}
+
+.auth-card {
+  @apply bg-white p-8 rounded-2xl shadow-lg;
+  border: 1px solid var(--border);
+}
+
+/* ==================== FORMS ==================== */
+input, textarea, select {
+  @apply w-full rounded-lg border px-4 py-3 transition-all duration-300 focus:outline-none;
+  border-color: var(--border);
+  background-color: var(--white);
+  color: var(--dark);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--gray);
+}
+
+input:hover:not(:disabled),
+textarea:hover:not(:disabled),
+select:hover:not(:disabled) {
+  border-color: var(--primary);
+  @apply shadow-md;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  @apply shadow-lg;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: var(--light-gray);
+  @apply cursor-not-allowed opacity-50;
+}
+
+/* Form label styling */
+label {
+  @apply block font-semibold mb-2;
+  color: var(--dark);
+}
+
+/* ==================== IMAGES & VISUALS ==================== */
+/* no global img:hover zoom — it made every image on every demo site pop on
+   hover. Zoom is kept scoped to .gallery-item below. */
+
+.gallery-item {
+  @apply relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-2xl;
+}
+
+.gallery-item:hover img {
+  @apply scale-110;
+}
+
+/* ==================== LINKS ==================== */
+a {
+  @apply transition-all duration-300;
 }
 
 .link-underline {
@@ -94,46 +251,40 @@ body {
 
 .link-underline::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300;
+  @apply absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300;
+  background-color: var(--primary);
 }
 
 .link-underline:hover::after {
   @apply w-full;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+/* ==================== TEXT STYLES ==================== */
+h1 {
+  @apply text-4xl md:text-5xl font-bold;
+  color: var(--dark);
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+h2 {
+  @apply text-3xl md:text-4xl font-bold;
+  color: var(--dark);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+h3 {
+  @apply text-2xl md:text-3xl font-bold;
+  color: var(--dark);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+p {
+  @apply leading-relaxed;
+  color: var(--gray);
 }
 
-/* Form Elements */
-input, textarea, select {
-  @apply rounded-lg border border-gray-300 px-4 py-2 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
-}
-
-input:disabled, textarea:disabled, select:disabled {
-  @apply bg-gray-100 cursor-not-allowed;
-}
-
-/* Animations */
+/* ==================== ANIMATIONS ==================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -144,7 +295,7 @@ input:disabled, textarea:disabled, select:disabled {
 @keyframes slideInDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -163,19 +314,113 @@ input:disabled, textarea:disabled, select:disabled {
   }
 }
 
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(0, 102, 204, 0);
+  }
+}
+
 .animate-fadeInUp {
   animation: fadeInUp 0.6s ease-out;
 }
 
 .animate-slideInDown {
-  animation: slideInDown 0.3s ease-out;
+  animation: slideInDown 0.4s ease-out;
 }
 
 .animate-scaleIn {
   animation: scaleIn 0.3s ease-out;
 }
 
-/* Accessibility */
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* ==================== SECTIONS ==================== */
+section {
+  @apply py-16 md:py-24;
+}
+
+/* no section:nth-child(even) background — its specificity beat the demo
+   sites' own bg-* classes and forced light-gray bands onto dark pages. */
+
+.section-padding {
+  @apply px-6 md:px-8 lg:px-12;
+}
+
+/* ==================== CONTAINER ==================== */
+.container-custom {
+  @apply max-w-7xl mx-auto;
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-gray);
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 80px 0;
+}
+
+.hero h1 {
+  color: white;
+}
+
+.hero p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==================== ERROR/SUCCESS MESSAGES ==================== */
+.error-message {
+  background-color: #fee;
+  border-color: var(--error);
+  color: var(--error);
+  @apply p-4 rounded-lg border mb-4;
+}
+
+.success-message {
+  background-color: #efe;
+  border-color: var(--success);
+  color: var(--success);
+  @apply p-4 rounded-lg border mb-4;
+}
+
+.warning-message {
+  background-color: #fef3c7;
+  border-color: var(--warning);
+  color: #92400e;
+  @apply p-4 rounded-lg border mb-4;
+}
+
+.info-message {
+  background-color: #dbeafe;
+  border-color: var(--info);
+  color: #1e40af;
+  @apply p-4 rounded-lg border mb-4;
+}
+
+/* ==================== ACCESSIBILITY ==================== */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -184,9 +429,28 @@ input:disabled, textarea:disabled, select:disabled {
   }
 }
 
-/* Print Styles */
+/* ==================== PRINT STYLES ==================== */
 @media print {
   body {
     background: white;
+  }
+
+  nav, footer {
+    display: none;
+  }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  section {
+    @apply py-12;
   }
 }

@@ -1,24 +1,19 @@
 import Head from 'next/head';
 import { NorthlineEstatesNav, NorthlineEstatesFooter } from '../../components/AllRemainingNavFooter';
-import ComingSoon from '../../components/ComingSoon';
+import AuthForm from '../../components/AuthForm';
 
-export default function LoginPage() {
+export default function NorthlineEstatesLogin() {
   return (
     <>
       <Head>
         <title>Login - Northline Estates</title>
-        <meta name="description" content="Login page - coming soon on the Northline Estates demo website." />
+        <meta name="description" content="Login to your Northline Estates demo account." />
       </Head>
 
       <NorthlineEstatesNav />
 
       <main className="flex-1">
-        <ComingSoon
-          site="Northline Estates"
-          home="/northline-estates"
-          page="Login"
-          theme="northline"
-        />
+        <AuthForm mode="login" theme="northline" site="Northline Estates" home="/northline-estates" />
       </main>
 
       <NorthlineEstatesFooter />
