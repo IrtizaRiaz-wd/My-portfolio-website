@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* ==================== PREMIUM CENTER EXPANDING UNDERLINE ==================== */
+.nav-link {
+  @apply relative inline-block text-gray-700 font-medium;
+  padding-bottom: 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Pseudo-element for the expanding underline */
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 h-0.5 bg-gray-900;
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              left 0.4s ease;
+}
+
+/* Hover state */
+.nav-link:hover {
+  @apply text-gray-900;
+  transform: scale(1.08);
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+  transform: translateX(0);
+}
+
+/* Active state */
+.nav-link.active {
+  @apply text-gray-900;
+  transform: scale(1.05);
+}
+
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+  transform: translateX(0);
+}
+
+/* Click/active animation */
+.nav-link:active {
+  transform: scale(0.98);
+}
+
+/* Utility Classes */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container-lg {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.btn-base {
+  @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 cursor-pointer;
+}
+
+.btn-primary {
+  @apply btn-base;
+}
+
+.link-underline {
+  @apply relative inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300;
+}
+
+.link-underline:hover::after {
+  @apply w-full;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Form Elements */
+input, textarea, select {
+  @apply rounded-lg border border-gray-300 px-4 py-2 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+input:disabled, textarea:disabled, select:disabled {
+  @apply bg-gray-100 cursor-not-allowed;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInDown {
+  animation: slideInDown 0.3s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+  }
+}
